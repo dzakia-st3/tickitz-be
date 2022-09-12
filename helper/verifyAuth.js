@@ -5,14 +5,14 @@ const verifyAuth = (req, res, next)=> {
         return res.status(404).send({message: "Token Required"})
         // (401).send({message: "Unauthorized User, Token Required"})
     }else {
-        jwt.verify(req.headers.authorization, process.env.JWT_SECRET_KEY, function(err, decoded) {
+        jwt.verify(req.headers.authorization, 'BismillahirrahmanirrahimBarokah!!!', function(err, decoded) {
             if(err) {
                 return res.status(404).send({message: "Access Forbidden"})
             }
             console.log(decoded, 'ehehehhe')
-            if(decoded.role === process.env.ROLE_ADMIN) {
+            if(decoded.role === admin) {
                 next()
-            }else if(decoded.role === process.env.ROLE_USER) {
+            }else if(decoded.role === user) {
                 return res.status(403).send({message: "Access Forbidden"})
             } 
             // next() //kalo udah benar semua, maka / lanjut ke tahap berikutnya.

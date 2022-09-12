@@ -24,10 +24,10 @@ module.exports = {
               bcrypt.compare(password, results[0].password, (errHashing, successHashing) => {
                 if(errHashing) {reject({message: "There is problem while logging, please try again."})} //bycript error, tampilin ke user seolah2
                 if(successHashing) {
-                  const token = jwt.sign({ user_id: results[0].id, role: results[0].role}, process.env.JWT_SECRET_KEY, 
+                  const token = jwt.sign({ user_id: results[0].id, role: results[0].role}, 'BismillahirrahmanirrahimBarokah!!!', 
                     // {expireIn: '1 month'}
                     );
-                  console.log(process.env.JWT_SECRET_KEY)
+                  console.log('BismillahirrahmanirrahimBarokah!!!')
 
                   // var decoded = jwt.decode("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJpYXQiOjE2NTcxMDMyNjJ9.5Si2fUSuaAiIrcvHUPhgN_ViiWIpWU1I77XbWhnUmps", process.env.JWT_SECRET_KEY);
                   // console.log(decoded) // bar
