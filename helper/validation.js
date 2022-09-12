@@ -1,7 +1,7 @@
 const fs = require('fs')
 
 module.exports = (req, res, next) => {
-    if(typeof (req.file) === 'undefined' || typeof(req.body) === 'undefined') {
+    if(typeof(req.body) === 'undefined' || typeof(req.file) === 'undefined' ) {
         return res.status(400).send({message: "Problem with sending data"})
     }
     

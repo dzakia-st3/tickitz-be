@@ -13,9 +13,9 @@ module.exports = {
         } catch (error) {
             return res.status(500).send(error)
         }
-    }, getMoviesByTitle: async (req, res) => {
+    }, getMoviesById: async (req, res) => {
         try {
-            const result = await movie.getByName(req,res)
+            const result = await movie.getById(req,res)
             return res.status(200).send(result)
         } catch (error) {
             return res.status(500).send(error)

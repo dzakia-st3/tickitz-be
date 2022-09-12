@@ -42,6 +42,7 @@ module.exports = {
                     data: {
                       user_id: results[0].id,
                       first_name: results[0].first_name,
+                      role: results[0].role,
                       image: results[0].image,
                       token,
                       

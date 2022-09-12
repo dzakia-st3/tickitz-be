@@ -55,26 +55,26 @@ module.exports = {
             })   
         })
 }, 
-// getByName : (req, res) => {
-//     return new Promise((resolve, reject) => {
-//         const {title} = req.params 
-//         const sql = `SELECT * FROM moviedetails WHERE title = '${title}'`
+getById : (req, res) => {
+    return new Promise((resolve, reject) => {
+        const {id} = req.params 
+        const sql = `SELECT * FROM moviedetails WHERE id = '${id}'`
             
-//          // ${id ? `WHERE id LIKE '${id}'`: id ? `WHERE id LIKE '${id}'`:''}`
+         // ${id ? `WHERE id LIKE '${id}'`: id ? `WHERE id LIKE '${id}'`:''}`
     
-//             db.query(sql, (err, result) => {
-//                 if(err) {
-//                     console.log(err)
-//                     reject({message: "ada error"})
-//                 }
-//                 resolve({
-//                     message: "get movies by title succes",
-//                     status: 200,
-//                     data: result
-//                 })
-//             }) 
-//     })
-// }, 
+            db.query(sql, (err, result) => {
+                if(err) {
+                    console.log(err)
+                    reject({message: "ada error"})
+                }
+                resolve({
+                    message: "get movies by id success",
+                    status: 200,
+                    data: result
+                })
+            }) 
+    })
+}, 
 getSort : (req, res) => {
     return new Promise((resolve, reject) => {
         const {title='', categories='', sortBy=''} = req.query
@@ -102,9 +102,9 @@ getSort : (req, res) => {
     })
 }, add : (req, res) => {
     return new Promise((resolve, reject)=> {
-        const {image, title, categories, release_date, directed_by, duration, cast, synopsis} = req.body
+        const {image, title, categories, release_date, directed_by, duration_hour, duration_minute, cast, synopsis} = req.body
 
-      db.query(`INSERT INTO moviedetails(image, title, categories, release_date, directed_by, duration, cast, synopsis) VALUES('${image}', '${title}', '${categories}', '${release_date}', '${directed_by}', '${duration}', '${cast}', '${synopsis}')`,(err, results)=> {
+      db.query(`INSERT INTO moviedetails(image, title, categories, release_date, directed_by, duration_hour, duration_minute, cast, synopsis) VALUES('${image}', '${title}', '${categories}', '${release_date}', '${directed_by}', '${duration_hour}', '${duration_minute}', '${cast}', '${synopsis}')`,(err, results)=> {
         if(err) {
           console.log(err)
           reject({message: "error"})
@@ -127,7 +127,7 @@ getSort : (req, res) => {
                 if(err) {
                     reject({message: "error"})
                 } 
-                if (result.length == 0) {
+                if (result?.length == 0) {
                     reject({message: "id not found"})
                 }
                 const previousData = {
@@ -135,16 +135,33 @@ getSort : (req, res) => {
                     ...req.body
                 }
                 let image = previousData.image
+
                 fs.unlink(`./uploads/${image}`, function (err) {
-                  if(err) {
-                    console.log(err)
-                    return res.status(400).send({message: "error delete file"})
-                  } else {
+                  if(err?.code == 'ENOENT' ) {
                     previousData.image = req.file.filename
 
-                    const {image, title, categories, release_date, directed_by, duration, cast, synopsis } = previousData
+                    const {image, title, categories, release_date, directed_by, duration_hour, duration_minute, cast, synopsis } = previousData
                     
-                    db.query(`UPDATE moviedetails SET image = '${image}', title = '${title}', categories = '${categories}', release_date = '${release_date}', directed_by = '${directed_by}', duration = '${duration}', cast = '${cast}', synopsis = '${synopsis}' WHERE id = ${id}`, (err, result) => {
+                    db.query(`UPDATE moviedetails SET image = '${image}', title = '${title}', categories = '${categories}', release_date = '${release_date}', directed_by = '${directed_by}', duration_hour = '${duration_hour}', duration_minute = '${duration_minute}', cast = '${cast}', synopsis = '${synopsis}' WHERE id = ${id}`, (err, result) => {
+                        if (err) {
+                            console.log(err)
+                            reject({message: "error"})
+                        }
+                            resolve({
+                            message: "update movies successfully",
+                            status: 200,
+                            data: result
+                            })
+                    })
+                  } else if (err) {
+                    console.log(err)
+                    return res.status(400).send({message: "error delete file"})
+                  }else {
+                    previousData.image = req.file.filename
+
+                    const {image, title, categories, release_date, directed_by, duration_hour, duration_minute, cast, synopsis } = previousData
+                    
+                    db.query(`UPDATE moviedetails SET image = '${image}', title = '${title}', categories = '${categories}', release_date = '${release_date}', directed_by = '${directed_by}', duration_hour = '${duration_hour}', duration_minute = '${duration_minute}', cast = '${cast}', synopsis = '${synopsis}' WHERE id = ${id}`, (err, result) => {
                         if (err) {
                             console.log(err)
                             reject({message: "error"})

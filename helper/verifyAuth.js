@@ -7,7 +7,7 @@ const verifyAuth = (req, res, next)=> {
     }else {
         jwt.verify(req.headers.authorization, process.env.JWT_SECRET_KEY, function(err, decoded) {
             if(err) {
-                return res.status(403).send({message: "Access Forbidden"})
+                return res.status(404).send({message: "Access Forbidden"})
             }
             console.log(decoded, 'ehehehhe')
             if(decoded.role === process.env.ROLE_ADMIN) {
