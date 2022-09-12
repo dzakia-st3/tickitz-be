@@ -2,7 +2,7 @@ require('dotenv').config()
 const OneSignal = require('@onesignal/node-onesignal');
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT
 const bodyParser = require('body-parser')
 const router = require('./routes')
 const cors = require('cors')
