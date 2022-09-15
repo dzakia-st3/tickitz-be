@@ -3,7 +3,10 @@ const db = require('../helper/db_connection')
 module.exports = {
     get: (req, res) => {
         return new Promise((resolve, reject) => {
-            const sql = 'SELECT user.full_name, user.email, user.phone_number, movie_selected, date_selected, time_selected, cinema_name, seat_choosed, number_of_tickets, total_payment, payment_method FROM booking JOIN user ON user.id=booking.id_user'
+            const { page = 1, limit = 5 } = req.query
+            const offset = (page - 1) * limit
+
+            const sql = `SELECT user.full_name, user.email, user.phone_number, movie_selected, date_selected, time_selected, cinema_name, seat_choosed, number_of_tickets, total_payment, payment_method FROM booking JOIN user ON user.id=booking.id_user LIMIT ${limit} OFFSET ${offset}`
 
             db.query(sql, (err, result) => {
                 if (err) {
@@ -15,7 +18,7 @@ module.exports = {
                         message: "Data not found",
                         data: result
                     })
-                    console.log(result, 'booking1')
+                    // console.log(result, 'booking1')
                 }
                 const results = {
                     result,
@@ -85,10 +88,10 @@ module.exports = {
             db.query(sql, (err, result) => {
                 if (err) {
                     reject({ message: "server error" })
-                  }
-                  if (result?.length == 0) {
+                }
+                if (result?.length == 0) {
                     reject({ message: "id not found" })
-                  }
+                }
                 const previousData = {
                     ...result[0],
                     ...req.body
