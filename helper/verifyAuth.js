@@ -10,9 +10,9 @@ const verifyAuth = (req, res, next)=> {
                 return res.status(404).send({message: "Access Forbidden"})
             }
             console.log(decoded, 'ehehehhe')
-            if(decoded.role === admin) {
+            if(decoded.role === process.env.ROLE_ADMIN) {
                 next()
-            }else if(decoded.role === user) {
+            }else if(decoded.role === process.env.ROLE_USER) {
                 return res.status(403).send({message: "Access Forbidden"})
             } 
             // next() //kalo udah benar semua, maka / lanjut ke tahap berikutnya.
