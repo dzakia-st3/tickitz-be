@@ -91,7 +91,6 @@ npm start
 | Account role  | email | password |
 | ----------- | :---------: | ----------: |
 | admin | milocoklat@gmail | milo12 |
-| user | issafaramadhani22@gmail.com | issafa12 |
 
 
 <!-- Contributors -->
