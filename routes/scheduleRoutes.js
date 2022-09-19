@@ -1,10 +1,12 @@
 const express = require ("express")
-const {getAllScehdule, addNewSchedule, updateSchedule, deleteSchedule} = require('../controller/scheduleController')
+const {getAllScehdule, addNewSchedule, addNewShowtime, getScheduleById, updateSchedule, deleteSchedule} = require('../controller/scheduleController')
 const router = express.Router ()
 
-router.get('/:id', getAllScehdule)
+router.get('/', getAllScehdule)
 router.post('/', addNewSchedule)
-router.patch('/:id_movie', updateSchedule)
-router.delete('/:id_movie', deleteSchedule)
+router.post('/time', addNewShowtime)
+router.get('/:id', getScheduleById)
+router.patch('/:id', updateSchedule)
+router.delete('/:id', deleteSchedule)
 
 module.exports = router

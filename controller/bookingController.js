@@ -8,6 +8,13 @@ module.exports = {
         } catch (error) {
             return res.status(500).send(error)
         }
+    }, getBookingById: async (req, res) => {
+        try {
+            const result = await booking.getById(req,res)
+            return res.status(200).send(result)
+        } catch (error) {
+            return res.status(500).send(error)
+        }
     }, addNewBooking: async (req, res) => {
         try {
             const result = await booking.add(req,res)

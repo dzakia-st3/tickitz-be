@@ -121,7 +121,7 @@ module.exports = {
   }, update: (req, res) => {
     return new Promise((resolve, reject) => {
       const { id } = req.params
-      const sql = `SELECT * FROM moviedetails where id = ${id}`
+      const sql = `SELECT * FROM moviedetails WHERE id = ${id}`
 
       db.query(sql, (err, result) => {
         if (err) {
@@ -176,7 +176,8 @@ module.exports = {
         })
       })
     })
-  }, remove: (req, res) => {
+  },
+  remove: (req, res) => {
     return new Promise((resolve, reject) => {
       const { id } = req.params
       db.query(`SELECT image FROM moviedetails WHERE id=${id}`, (err, resultData) => {
