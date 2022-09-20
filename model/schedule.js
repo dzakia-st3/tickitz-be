@@ -28,10 +28,18 @@ module.exports = {
                     console.log(err)
                     reject({ message: "server error" })
                 }
+
+                const data = result.map((item) => {
+                    return {
+                        ...item,
+                        showtime: item.showtime.split(",")
+                    }
+                })
+
                 resolve({
                     message: "get schedule id movie success",
                     status: 200,
-                    data: result
+                    data: data
                 })
             })
         })
