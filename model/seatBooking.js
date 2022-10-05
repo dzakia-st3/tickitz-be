@@ -27,9 +27,9 @@ module.exports = {
     },
     add: function(req, res) {
         return new Promise((resolve, reject) => {
-            const { id_booking, seat} = req.body
+            const { id_booking, seat_choosed} = req.body
 
-            const sql = `INSERT INTO seat_booking ( id_booking, seat) VALUES ('${id_booking}', '${seat}')`
+            const sql = `INSERT INTO seat_booking ( id_booking, seat_choosed) VALUES ('${id_booking}', '${seat_choosed}')`
 
             db.query(sql, (err, result) => {
                 if (err) {
@@ -50,10 +50,10 @@ module.exports = {
     },
     update: function(req, res) {
         return new Promise((resolve, reject) => {
-            const { seat } = req.body
+            const { seat_choosed } = req.body
             const { id_booking_seat } = req.params
 
-            const sql = `UPDATE seat_booking SET seat = '${seat}' WHERE id_booking_seat = '${id_booking_seat}'`
+            const sql = `UPDATE seat_booking SET seat_choosed = '${seat_choosed}' WHERE id_booking_seat = '${id_booking_seat}'`
 
             db.query(sql, (err, result) => {
                 if(err) {
@@ -75,9 +75,9 @@ module.exports = {
     remove: function (req, res) {
         return new Promise((resolve, reject) => {
             const {id_booking} = req.params
-            const {seat} = req.query
+            const {seat_choosed} = req.query
 
-            const sql = `DELETE FROM seat_booking WHERE id_booking = ${id_booking} AND seat = '${seat}'`
+            const sql = `DELETE FROM seat_booking WHERE id_booking = ${id_booking} AND seat = '${seat_choosed}'`
 
             db.query(sql, (err, result) => {
                 if (err) {
