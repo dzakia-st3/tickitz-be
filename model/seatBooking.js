@@ -29,7 +29,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
             const { id_booking, seat_choosed} = req.body
 
-            const sql = `INSERT INTO seat_booking ( id_booking, seat_choosed) VALUES ('${id_booking}', '${seat_choosed}')`
+            const sql = `INSERT INTO seat_booking ( id_booking, seat_choosed) VALUES (${id_booking}, ${seat_choosed})`
 
             db.query(sql, (err, result) => {
                 if (err) {
