@@ -6,7 +6,7 @@ module.exports = {
             const {sortBy = "seat_choosed", order = "ASC"} = req.query
             const {id} = req.params
 
-            const sql = `SELECT * FROM seat_booking WHERE id_booking = ${id} ORDER BY ${sortBy} ${order}`
+            const sql = `SELECT * FROM seat_booking WHERE id_booking = '${id}' ORDER BY ${sortBy} ${order}`
 
             db.query(sql, (err, result) => {
                 if (err) {
