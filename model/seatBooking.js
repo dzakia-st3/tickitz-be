@@ -3,7 +3,7 @@ const db = require("../helper/db_connection")
 module.exports = {
     get: function(req, res) {
         return new Promise((resolve, reject) => {
-            const {sortBy = "seat", order = "ASC"} = req.query
+            const {sortBy = "seat_choosed", order = "ASC"} = req.query
             const {id_booking} = req.params
 
             const sql = `SELECT * FROM seat_booking WHERE id_booking = ${id_booking} ORDER BY ${sortBy} ${order}`
