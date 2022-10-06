@@ -3,12 +3,13 @@ const db = require("../helper/db_connection")
 module.exports = {
     get: function(req, res) {
         return new Promise((resolve, reject) => {
-            const {sortBy = "seat_choosed", order = "ASC"} = req.query
+            const {sortBy = "seat_choosed", order = "ASC",} = req.query
             const {id} = req.params
 
-            const sql = `SELECT * FROM seat_booking WHERE id_booking = ${id}`
+            const sql = `SELECT * FROM seat_booking WHERE id_booking = ${id} ORDER BY ${sortBy} ${order}`
 
             db.query(sql, (err, result) => {
+                console.log (result, 'cek isi result')
                 if (err) {
                     reject({
                         messsage: "error",
