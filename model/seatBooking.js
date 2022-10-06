@@ -4,9 +4,9 @@ module.exports = {
     get: function(req, res) {
         return new Promise((resolve, reject) => {
             const {sortBy = "seat_choosed", order = "ASC"} = req.query
-            const {id_booking} = req.params
+            const {id} = req.params
 
-            const sql = `SELECT * FROM seat_booking WHERE id_booking = ${id_booking} ORDER BY ${sortBy} ${order}`
+            const sql = `SELECT * FROM seat_booking WHERE id_booking = ${id} ORDER BY ${sortBy} ${order}`
 
             db.query(sql, (err, result) => {
                 if (err) {
