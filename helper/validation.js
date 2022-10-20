@@ -1,8 +1,12 @@
 const fs = require('fs')
 
 module.exports = (req, res, next) => {
+    if(typeof(req.body) === 'undefined' || typeof(req.file) === 'undefined' ) {
+        return res.status(400).send({message: "Problem with sending data"})
+    }
     
-    let image = req.file
+    console.log(req.file);
+    let image = req.file.path
     
     if(!(req.file.mimetype).includes('jpeg') && !(req.file.mimetype).includes('jpg') && !(req.file.mimetype).includes('png') && !(req.file.mimetype).includes('svg')) {
         fs.unlinkSync(image)
