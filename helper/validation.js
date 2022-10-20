@@ -2,7 +2,7 @@ const fs = require('fs')
 
 module.exports = (req, res, next) => {
     
-    let image = req.file.path
+    let image = req.file
     
     if(!(req.file.mimetype).includes('jpeg') && !(req.file.mimetype).includes('jpg') && !(req.file.mimetype).includes('png') && !(req.file.mimetype).includes('svg')) {
         fs.unlinkSync(image)
