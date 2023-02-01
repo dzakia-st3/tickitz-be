@@ -22,7 +22,7 @@ module.exports = {
           console.log(err)
           reject({ message: "error" })
         }
-        if (!result.length) {
+        if (!result?.length) {
           reject({
             message: "Data not found",
             data: result
@@ -37,7 +37,7 @@ module.exports = {
           if (err) {
             reject({ message: "data not found" })
           }
-          totalRows = result.length
+          totalRows = result?.length
           totalPage = Math.ceil(totalRows / limit)
 
           resolve({

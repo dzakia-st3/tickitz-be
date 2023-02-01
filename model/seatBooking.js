@@ -34,6 +34,7 @@ module.exports = {
 
             db.query(sql, (err, result) => {
                 if (err) {
+                    console.log(err)
                     reject ({
                         messsage: "error",
                         status: 500,
