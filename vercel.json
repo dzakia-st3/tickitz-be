@@ -10,7 +10,8 @@
         {
             "src": "/(.*)",
             "dest": "/",
-            "src": "/api/v1/movie", "dest": "/movieRoutes.js"
+            "src": "/movie/", "dest": "/movieRoutes.js",
+            "src": "/movie/", "methods": ["GET"], "dest": "/movieRoutes.js"
         }
     ]
   }
