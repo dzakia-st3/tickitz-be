@@ -2,7 +2,7 @@
     "version": 2,
     "routes": [
         {
-            "src": "/api/v1/movie/", "methods": ["GET"], "dest": "/route/movieRoutes.js"
+            "src": "/api/v1/movie/", "methods": ["GET"], "dest": "/routes/movieRoutes.js"
         }
     ]
   }
