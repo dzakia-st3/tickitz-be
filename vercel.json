@@ -1,15 +1,9 @@
 {
     "version": 2,
-    "builds" : [
-        {
-            "src": "index.js",
-            "use": "@vercel/node"
-        }
-    ],
+    
     "routes": [
-        {
-            "src": "/api/v1/movie/", "methods": ["GET"], "dest": "/routes/movieRoutes.js"
-        }
+        { "src": "/movie", "dest": "/routes/movieRoutes.js"}
+        
     ]
   }
   
