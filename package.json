@@ -1,7 +1,7 @@
 {
   "name": "week-4",
   "version": "1.0.0",
-  "description": "",
+  "description": "<!-- NAVIGATION -->\r <ol>\r     <li>\r       <a href=\"#about-the-project\">About The Project</a>\r       <ul>\r         <li><a href=\"#built-with\">Built With</a></li>\r       </ul>\r     </li>\r     <li>\r       <a href=\"#getting-started\">Getting Started</a>\r       <ul>\r         <li><a href=\"#prerequisites\">Prerequisites</a></li>\r         <li><a href=\"#installation\">Installation</a></li>\r       </ul>\r     </li>\r     <li><a href=\"#contributors\">Contributors</a></li>\r   </ol>",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -23,5 +23,15 @@
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.18",
     "react-multi-carousel": "^2.8.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dzakia-st3/tickitz-be.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/dzakia-st3/tickitz-be/issues"
+  },
+  "homepage": "https://github.com/dzakia-st3/tickitz-be#readme"
 }
