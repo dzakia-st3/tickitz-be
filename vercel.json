@@ -8,10 +8,7 @@
     ],
     "routes": [
         {
-            "src": "/(.*)",
-            "dest": "/",
-            "src": "/movie/", "dest": "/movieRoutes.js",
-            "src": "/movie/", "methods": ["GET"], "dest": "/movieRoutes.js"
+            "src": "/api/v1/movie/", "methods": ["GET"], "dest": "/routes/movieRoutes.js"
         }
     ]
   }
