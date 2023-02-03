@@ -1,9 +1,9 @@
 {
     "version": 2,
-    
     "routes": [
-        { "src": "/movie", "dest": "/routes/movieRoutes.js"}
-        
+        {
+            "src": "/api/v1/movie/", "methods": ["GET"], "dest": "/model/movie.js"
+        }
     ]
   }
   
