@@ -4,13 +4,9 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT
 const bodyParser = require('body-parser')
-// const router = require('./routes')
+const router = require('./routes')
 const cors = require('cors')
 const path = require('path')
-const jsonServer = require('json-server')
-const server = jsonServer.create()
-const router = jsonServer('./routes')
-const middlewares = jsonServer.defaults()
 
 app.use(cors())
 
@@ -26,9 +22,3 @@ app.listen(port, () => {
   console.log(`Tickitz Backend listening on port ${port}`)
 })
 
-server.use(middlewares)
-server.use(router)
-
-server.listen(port, () => {
-  console.log(`JSON Server is running on port ${port}`)
-})
