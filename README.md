@@ -36,7 +36,7 @@ some technology used in this project.
 [Postman](https://documenter.getpostman.com/view/21402214/UzBsHQ2Y)
 
 ### Link Deploy
-<a>https://starfish-app-2mjf6.ondigitalocean.app/</a> 
+<a>https://tickitz-api.vercel.app/</a> 
 <!-- GETTING STARTED -->
 
 ## Getting Started
